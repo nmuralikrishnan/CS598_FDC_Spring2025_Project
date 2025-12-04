@@ -50,9 +50,10 @@ reproduce, and analyze the dataset.
 
 
 **Computational Environment** 
-● Operating System: Windows 10 
-● Programming Language: Python 3.11 
-● Python Packages and Versions: 
+- Operating System: Windows 10 
+- Programming Language: Python 3.11 
+- Python Packages and Versions: 
+
 | Package     | Version | Purpose                                |
 |-------------|---------|------------------------------------------|
 | pandas      | 2.1.1   | Data manipulation and CSV file processing |

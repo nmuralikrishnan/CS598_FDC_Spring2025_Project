@@ -1,0 +1,64 @@
+{
+  "identifier": {
+    "identifier": "Not assigned",
+    "identifierType": "DOI"
+  },
+  "creators": [
+    {
+      "creatorName": "Murali Natarajan"
+    },
+    {
+      "creatorName": "Ramitha Kotarkonda"
+    },
+    {
+      "creatorName": "Matthew Guan"
+    }
+
+  ],
+  "titles": [
+    {
+      "title": "Chicago 311 Service Request Dataset (Curated Sample Extract, 2025)"
+    }
+  ],
+  "publisher": "University of Illinois at Urbana-Champaign",
+  "publicationYear": 2025,
+  "resourceType": {
+    "resourceTypeGeneral": "Dataset",
+    "resourceType": "CSV tabular dataset"
+  },
+  "subjects": [
+    { "subject": "311 Service Requests" },
+    { "subject": "Public Service Data" },
+    { "subject": "Chicago City Services" },
+  ],
+
+ "contributors": [
+    {
+      "contributorName": "City of Chicago",
+      "contributorType": "DataCurator"
+    }  
+  ],
+
+  "dates": [
+    {
+      "date": "2025-12-03",
+      "dateType": "Collected"
+    }  
+  ],
+
+  "rightsList": [
+  {
+    "rights": "Public Domain / Open Data",
+    "rightsURI": "https://opendefinition.org/licenses/pdl/"
+  }
+ ],
+
+ "relatedIdentifiers": [
+  {
+    "relatedIdentifier": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests/v6vf-nfxy/about_data",
+    "relatedIdentifierType": "URL",
+    "relationType": "IsDerivedFrom"
+  }
+ ]
+  
+}

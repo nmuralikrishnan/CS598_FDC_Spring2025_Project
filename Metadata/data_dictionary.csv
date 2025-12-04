@@ -1,0 +1,23 @@
+Field Name,Type,Description,Example
+SR_NUMBER,String,Unique identifier assigned to each 311 service request,SR25-01948318
+SR_TYPE,String,Full text description of the service request category,Aircraft Noise Complaint
+SR_SHORT_CODE,String,Abbreviated service request type code,AVN
+CREATED_DEPARTMENT,String,Name of the department that initially logged the request,Unknown
+OWNER_DEPARTMENT,String,Department responsible for addressing and resolving the request,Aviation
+STATUS,String,Current status of the request (open, in progress, completed, etc.),Completed
+ORIGIN,String,How the request was submitted (phone, mobile app, internet, etc.),Internet
+CREATED_DATE,DateTime (ISO 8601),Date and time the service request was created,2025-10-22T19:15:30
+LAST_MODIFIED_DATE,DateTime (ISO 8601),Most recent update to the request record,2025-10-22T19:15:31
+CLOSED_DATE,DateTime (ISO 8601),Date and time the request was closed. Null if unresolved,2025-10-22T19:15:30
+CITY,String,City where the service request occurred,Chicago
+STATE,String,State where the service request occurred,Illinois
+ZIP_CODE,Integer,3- or 5-digit ZIP code associated with the service request,606
+DUPLICATE,Boolean,Whether the record was classified as a duplicate,false
+LEGACY_RECORD,Boolean,Indicates records carried over from older City of Chicago systems,false
+PARENT_SR_NUMBER,String,If the request is a duplicate, this field contains the original SR number,SR25-01948317
+COMMUNITY_AREA,Float,Chicago community area code (1–77),67.0
+WARD,Float,Chicago ward number (1–50),17.0
+LATITUDE,Float,Latitude coordinate of request location,41.7703
+LONGITUDE,Float,Longitude coordinate of request location,-87.6654
+RESOLUTION_TIME_HOURS,Float,Time from creation to closure, converted to hours,0.0
+CREATED_TIME,Time (HH:MM:SS),Time-of-day component extracted from CREATED_DATE,19:15:30

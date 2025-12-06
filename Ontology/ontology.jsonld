@@ -1,0 +1,175 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+
+    "c311": "https://example.org/chicago311/ontology#",
+
+    "ServiceRequest": "c311:ServiceRequest",
+    "Department": "c311:Department",
+    "Location": "c311:Location",
+
+    "srNumber": "c311:srNumber",
+    "srType": "c311:srType",
+    "srShortCode": "c311:srShortCode",
+    "createdDepartment": "c311:createdDepartment",
+    "ownerDepartment": "c311:ownerDepartment",
+    "status": "c311:status",
+    "origin": "c311:origin",
+    "createdDate": "c311:createdDate",
+    "lastModifiedDate": "c311:lastModifiedDate",
+    "closedDate": "c311:closedDate",
+
+    "city": "c311:city",
+    "state": "c311:state",
+    "zipCode": "c311:zipCode",
+
+    "duplicate": "c311:duplicate",
+    "legacyRecord": "c311:legacyRecord",
+    "parentSrNumber": "c311:parentSrNumber",
+
+    "communityArea": "c311:communityArea",
+    "ward": "c311:ward",
+    "electricalDistrict": "c311:electricalDistrict",
+    "electricityGrid": "c311:electricityGrid",
+    "policeSector": "c311:policeSector",
+    "policeDistrict": "c311:policeDistrict",
+    "policeBeat": "c311:policeBeat",
+    "precinct": "c311:precinct",
+
+    "latitude": "c311:latitude",
+    "longitude": "c311:longitude",
+
+    "resolutionTimeHours": "c311:resolutionTimeHours",
+    "createdTime": "c311:createdTime",
+
+    "hasLocation": {
+      "@id": "c311:hasLocation",
+      "@type": "@id"
+    },
+    "handledBy": {
+      "@id": "c311:handledBy",
+      "@type": "@id"
+    }
+  },
+
+  "@graph": [
+
+    {
+      "@id": "c311:ServiceRequest",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Service Request",
+      "rdfs:comment": "A single 311 service request submitted by a Chicago resident."
+    },
+
+    {
+      "@id": "c311:Department",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Department",
+      "rdfs:comment": "A city department responsible for creating or owning a service request."
+    },
+
+    {
+      "@id": "c311:Location",
+      "@type": "rdfs:Class",
+      "rdfs:label": "Location",
+      "rdfs:comment": "Geographic information for a service request, including coordinates and administrative boundaries."
+    },
+
+    {
+      "@id": "c311:srNumber",
+      "@type": "rdf:Property",
+      "rdfs:label": "Service Request Number",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "xsd:string"
+    },
+
+    {
+      "@id": "c311:srType",
+      "@type": "rdf:Property",
+      "rdfs:label": "Service Request Type",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "xsd:string"
+    },
+
+    {
+      "@id": "c311:srShortCode",
+      "@type": "rdf:Property",
+      "rdfs:label": "Short Code for Service Type",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "xsd:string"
+    },
+
+    {
+      "@id": "c311:createdDepartment",
+      "@type": "rdf:Property",
+      "rdfs:label": "Created By Department",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "c311:Department"
+    },
+
+    {
+      "@id": "c311:ownerDepartment",
+      "@type": "rdf:Property",
+      "rdfs:label": "Owner Department",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "c311:Department"
+    },
+
+    {
+      "@id": "c311:status",
+      "@type": "rdf:Property",
+      "rdfs:label": "Service Request Status",
+      "rdfs:range": "xsd:string"
+    },
+
+    {
+      "@id": "c311:origin",
+      "@type": "rdf:Property",
+      "rdfs:label": "Request Origin"
+    },
+
+    {
+      "@id": "c311:createdDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "Created Date",
+      "rdfs:range": "xsd:date"
+    },
+
+    {
+      "@id": "c311:lastModifiedDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "Last Modified Date",
+      "rdfs:range": "xsd:dateTime"
+    },
+
+    {
+      "@id": "c311:closedDate",
+      "@type": "rdf:Property",
+      "rdfs:label": "Closed Date",
+      "rdfs:range": "xsd:dateTime"
+    },
+
+    {
+      "@id": "c311:hasLocation",
+      "@type": "rdf:Property",
+      "rdfs:label": "Location",
+      "rdfs:domain": "c311:ServiceRequest",
+      "rdfs:range": "c311:Location"
+    },
+
+    {
+      "@id": "c311:latitude",
+      "@type": "rdf:Property",
+      "rdfs:label": "Latitude",
+      "rdfs:range": "xsd:float"
+    },
+
+    {
+      "@id": "c311:longitude",
+      "@type": "rdf:Property",
+      "rdfs:label": "Longitude",
+      "rdfs:range": "xsd:float"
+    }
+
+  ]
+}

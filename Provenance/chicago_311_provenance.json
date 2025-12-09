@@ -1,0 +1,422 @@
+{
+  "prefix": {
+    "datacite": "http://purl.org/spar/datacite/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "chicago311": "http://uiuc.edu/cs598fdc/chicago311#",
+    "default": "http://uiuc.edu/cs598fdc/chicago311#"
+  },
+  "agent": {
+    "chicago311:murali_natarajan": {
+      "prov:type": "prov:Person",
+      "foaf:name": "Murali Natarajan",
+      "chicago311:role": "Project Lead, Data Engineer"
+    },
+    "chicago311:ramitha_kotarkonda": {
+      "prov:type": "prov:Person",
+      "foaf:name": "Ramitha Kotarkonda",
+      "chicago311:role": "Data Scientist, Analyst"
+    },
+    "chicago311:matthew_guan": {
+      "prov:type": "prov:Person",
+      "foaf:name": "Matthew Guan",
+      "chicago311:role": "Data Curator, Documentation"
+    },
+    "chicago311:python_environment": {
+      "prov:type": "prov:SoftwareAgent",
+      "chicago311:version": "Python 3.11",
+      "chicago311:packages": "pandas 2.1.1, numpy 1.26.2, matplotlib 3.8.2, seaborn 0.12.2"
+    },
+    "chicago311:city_of_chicago": {
+      "prov:type": "prov:Organization",
+      "foaf:name": "City of Chicago Open Data Portal",
+      "chicago311:role": "Original Data Provider"
+    },
+    "chicago311:uiuc": {
+      "prov:type": "prov:Organization",
+      "foaf:name": "University of Illinois at Urbana-Champaign",
+      "chicago311:department": "CS 598 Foundations of Data Curation"
+    }
+  },
+  "entity": {
+    "chicago311:original_311_dataset": {
+      "prov:type": "chicago311:OriginalDataset",
+      "prov:label": "Chicago 311 Service Requests - Original Dataset",
+      "datacite:identifier": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests/v6vf-nfxy",
+      "chicago311:source": "City of Chicago Open Data Portal",
+      "chicago311:accessDate": "2025-12-03",
+      "chicago311:license": "Public Domain"
+    },
+    "chicago311:raw_311_dataset": {
+      "prov:type": "chicago311:RawDataset",
+      "prov:label": "311 Service Requests - Raw Sample",
+      "chicago311:filename": "311_Service_Requests_20251022.csv",
+      "chicago311:location": "Curated Dataset/1_Raw/",
+      "chicago311:recordCount": {
+        "$": 199999,
+        "type": "xsd:int"
+      },
+      "chicago311:columnCount": {
+        "$": 39,
+        "type": "xsd:int"
+      },
+      "chicago311:sampleMethod": "Random sampling using df.sample()",
+      "chicago311:sampleSeed": {
+        "$": 42,
+        "type": "xsd:int"
+      },
+      "prov:generatedAtTime": "2025-10-22T00:00:00"
+    },
+    "chicago311:cleaned_311_dataset": {
+      "prov:type": "chicago311:CleanedDataset",
+      "prov:label": "311 Service Requests - Cleaned",
+      "chicago311:filename": "311_Service_Requests_CLEANED_20251022.csv",
+      "chicago311:location": "Curated Dataset/2_Cleaned/",
+      "chicago311:recordCount": {
+        "$": 194104,
+        "type": "xsd:int"
+      },
+      "chicago311:columnCount": {
+        "$": 36,
+        "type": "xsd:int"
+      },
+      "chicago311:duplicatesRemoved": {
+        "$": 5690,
+        "type": "xsd:int"
+      },
+      "chicago311:unlocatableRecordsRemoved": {
+        "$": 205,
+        "type": "xsd:int"
+      },
+      "prov:generatedAtTime": "2025-10-25T14:41:14"
+    },
+    "chicago311:deidentified_311_dataset": {
+      "prov:type": "chicago311:DeidentifiedDataset",
+      "prov:label": "311 Service Requests - K-Anonymized",
+      "chicago311:filename": "311_Service_Requests_K5_ANONYMIZED_GENERALIZED_20251022.csv",
+      "chicago311:location": "Curated Dataset/3_Deidentified/",
+      "chicago311:recordCount": {
+        "$": 193841,
+        "type": "xsd:int"
+      },
+      "chicago311:columnCount": {
+        "$": 28,
+        "type": "xsd:int"
+      },
+      "chicago311:kAnonymityThreshold": {
+        "$": 5,
+        "type": "xsd:int"
+      },
+      "chicago311:recordsSuppressed": {
+        "$": 263,
+        "type": "xsd:int"
+      },
+      "chicago311:privacyMethod": "K-Anonymity with Generalization",
+      "prov:generatedAtTime": "2025-10-25T15:00:00"
+    },
+    "chicago311:config_script": {
+      "prov:type": "chicago311:ConfigurationFile",
+      "prov:label": "Configuration File",
+      "chicago311:filename": "config.py",
+      "chicago311:location": "Data Cleaning/",
+      "chicago311:purpose": "Centralized configuration for file paths and parameters"
+    },
+    "chicago311:cleaning_script": {
+      "prov:type": "chicago311:ProcessingScript",
+      "prov:label": "Data Cleaning Script",
+      "chicago311:filename": "cleanRawData.py",
+      "chicago311:location": "Data Cleaning/",
+      "chicago311:language": "Python 3.11"
+    },
+    "chicago311:deidentification_script": {
+      "prov:type": "chicago311:ProcessingScript",
+      "prov:label": "De-identification Script",
+      "chicago311:filename": "deIdentification.py",
+      "chicago311:location": "Data Cleaning/",
+      "chicago311:language": "Python 3.11"
+    },
+    "chicago311:segmentation_notebook": {
+      "prov:type": "chicago311:AnalysisNotebook",
+      "prov:label": "K-Means Clustering Analysis",
+      "chicago311:filename": "segmentation_model.ipynb",
+      "chicago311:location": "Data Analysis Jupyter Notebooks/",
+      "chicago311:method": "K-Means Clustering",
+      "chicago311:purpose": "Identify service request clusters"
+    },
+    "chicago311:feature_importance_notebook": {
+      "prov:type": "chicago311:AnalysisNotebook",
+      "prov:label": "Feature Importance Analysis",
+      "chicago311:filename": "CS_598_Project_Feature_Importance (2).ipynb",
+      "chicago311:location": "Data Analysis Jupyter Notebooks/",
+      "chicago311:method": "Random Forest Regression",
+      "chicago311:purpose": "Predict resolution time and identify important features"
+    },
+    "chicago311:cleaning_report": {
+      "prov:type": "chicago311:Report",
+      "prov:label": "Data Cleaning Summary Report",
+      "chicago311:filename": "cleaning_summary_report.md",
+      "chicago311:location": "Curated Dataset/2_Cleaned/"
+    },
+    "chicago311:deidentification_report": {
+      "prov:type": "chicago311:Report",
+      "prov:label": "De-identification Summary Report",
+      "chicago311:filename": "deidentification_summary_report.md",
+      "chicago311:location": "Curated Dataset/3_Deidentified/"
+    },
+    "chicago311:metadata": {
+      "prov:type": "chicago311:Metadata",
+      "prov:label": "DataCite Metadata",
+      "chicago311:filename": "metadata.json",
+      "chicago311:location": "Metadata/",
+      "chicago311:standard": "DataCite JSON Schema"
+    },
+    "chicago311:data_dictionary": {
+      "prov:type": "chicago311:Documentation",
+      "prov:label": "Data Dictionary",
+      "chicago311:filename": "data_dictionary.csv",
+      "chicago311:location": "Metadata/"
+    }
+  },
+  "activity": {
+    "chicago311:data_collection_activity": {
+      "prov:startTime": "2025-12-03T00:00:00",
+      "prov:endTime": "2025-12-03T12:00:00",
+      "prov:type": "chicago311:DataCollection",
+      "prov:label": "Collect and Sample 311 Data",
+      "chicago311:description": "Obtained raw data from City of Chicago Open Data Portal and extracted sample subset using random sampling"
+    },
+    "chicago311:data_cleaning_activity": {
+      "prov:startTime": "2025-10-25T14:00:00",
+      "prov:endTime": "2025-10-25T14:41:14",
+      "prov:type": "chicago311:DataCleaning",
+      "prov:label": "Clean and Standardize Data",
+      "chicago311:description": "Remove duplicates, handle missing values, standardize formats, and engineer features"
+    },
+    "chicago311:deidentification_activity": {
+      "prov:startTime": "2025-10-25T14:45:00",
+      "prov:endTime": "2025-10-25T15:00:00",
+      "prov:type": "chicago311:DeIdentification",
+      "prov:label": "Apply K-Anonymity and Generalization",
+      "chicago311:description": "Enforce K-anonymity (k=5) through generalization and suppression",
+      "chicago311:privacyTechnique": "K-Anonymity with Generalization"
+    },
+    "chicago311:segmentation_activity": {
+      "prov:type": "chicago311:DataAnalysis",
+      "prov:label": "K-Means Clustering Analysis",
+      "chicago311:description": "Identify clusters of similar service requests using unsupervised learning"
+    },
+    "chicago311:feature_importance_activity": {
+      "prov:type": "chicago311:DataAnalysis",
+      "prov:label": "Feature Importance Analysis",
+      "chicago311:description": "Predict resolution time and determine feature importance using Random Forest"
+    },
+    "chicago311:documentation_activity": {
+      "prov:startTime": "2025-10-25T00:00:00",
+      "prov:endTime": "2025-12-06T00:00:00",
+      "prov:type": "chicago311:Documentation",
+      "prov:label": "Create Documentation and Metadata",
+      "chicago311:description": "Generate metadata, reports, and data dictionary"
+    }
+  },
+  "wasDerivedFrom": {
+    "_:id1": {
+      "prov:generatedEntity": "chicago311:raw_311_dataset",
+      "prov:usedEntity": "chicago311:original_311_dataset"
+    },
+    "_:id2": {
+      "prov:generatedEntity": "chicago311:cleaned_311_dataset",
+      "prov:usedEntity": "chicago311:raw_311_dataset"
+    },
+    "_:id3": {
+      "prov:generatedEntity": "chicago311:deidentified_311_dataset",
+      "prov:usedEntity": "chicago311:cleaned_311_dataset"
+    }
+  },
+  "wasGeneratedBy": {
+    "_:id4": {
+      "prov:entity": "chicago311:raw_311_dataset",
+      "prov:activity": "chicago311:data_collection_activity"
+    },
+    "_:id5": {
+      "prov:entity": "chicago311:cleaned_311_dataset",
+      "prov:activity": "chicago311:data_cleaning_activity"
+    },
+    "_:id6": {
+      "prov:entity": "chicago311:deidentified_311_dataset",
+      "prov:activity": "chicago311:deidentification_activity"
+    },
+    "_:id7": {
+      "prov:entity": "chicago311:cleaning_report",
+      "prov:activity": "chicago311:data_cleaning_activity"
+    },
+    "_:id8": {
+      "prov:entity": "chicago311:deidentification_report",
+      "prov:activity": "chicago311:deidentification_activity"
+    },
+    "_:id9": {
+      "prov:entity": "chicago311:metadata",
+      "prov:activity": "chicago311:documentation_activity"
+    },
+    "_:id10": {
+      "prov:entity": "chicago311:data_dictionary",
+      "prov:activity": "chicago311:documentation_activity"
+    }
+  },
+  "used": {
+    "_:id11": {
+      "prov:activity": "chicago311:data_collection_activity",
+      "prov:entity": "chicago311:original_311_dataset"
+    },
+    "_:id12": {
+      "prov:activity": "chicago311:data_cleaning_activity",
+      "prov:entity": "chicago311:raw_311_dataset"
+    },
+    "_:id13": {
+      "prov:activity": "chicago311:data_cleaning_activity",
+      "prov:entity": "chicago311:cleaning_script"
+    },
+    "_:id14": {
+      "prov:activity": "chicago311:data_cleaning_activity",
+      "prov:entity": "chicago311:config_script"
+    },
+    "_:id15": {
+      "prov:activity": "chicago311:deidentification_activity",
+      "prov:entity": "chicago311:cleaned_311_dataset"
+    },
+    "_:id16": {
+      "prov:activity": "chicago311:deidentification_activity",
+      "prov:entity": "chicago311:deidentification_script"
+    },
+    "_:id17": {
+      "prov:activity": "chicago311:deidentification_activity",
+      "prov:entity": "chicago311:config_script"
+    },
+    "_:id18": {
+      "prov:activity": "chicago311:segmentation_activity",
+      "prov:entity": "chicago311:deidentified_311_dataset"
+    },
+    "_:id19": {
+      "prov:activity": "chicago311:segmentation_activity",
+      "prov:entity": "chicago311:segmentation_notebook"
+    },
+    "_:id20": {
+      "prov:activity": "chicago311:feature_importance_activity",
+      "prov:entity": "chicago311:deidentified_311_dataset"
+    },
+    "_:id21": {
+      "prov:activity": "chicago311:feature_importance_activity",
+      "prov:entity": "chicago311:feature_importance_notebook"
+    }
+  },
+  "wasAttributedTo": {
+    "_:id22": {
+      "prov:entity": "chicago311:raw_311_dataset",
+      "prov:agent": "chicago311:city_of_chicago"
+    },
+    "_:id23": {
+      "prov:entity": "chicago311:cleaned_311_dataset",
+      "prov:agent": "chicago311:murali_natarajan"
+    },
+    "_:id24": {
+      "prov:entity": "chicago311:deidentified_311_dataset",
+      "prov:agent": "chicago311:murali_natarajan"
+    },
+    "_:id25": {
+      "prov:entity": "chicago311:cleaning_script",
+      "prov:agent": "chicago311:murali_natarajan"
+    },
+    "_:id26": {
+      "prov:entity": "chicago311:deidentification_script",
+      "prov:agent": "chicago311:murali_natarajan"
+    },
+    "_:id27": {
+      "prov:entity": "chicago311:segmentation_notebook",
+      "prov:agent": "chicago311:ramitha_kotarkonda"
+    },
+    "_:id28": {
+      "prov:entity": "chicago311:feature_importance_notebook",
+      "prov:agent": "chicago311:ramitha_kotarkonda"
+    },
+    "_:id29": {
+      "prov:entity": "chicago311:metadata",
+      "prov:agent": "chicago311:matthew_guan"
+    },
+    "_:id30": {
+      "prov:entity": "chicago311:data_dictionary",
+      "prov:agent": "chicago311:matthew_guan"
+    }
+  },
+  "wasAssociatedWith": {
+    "_:id31": {
+      "prov:activity": "chicago311:data_collection_activity",
+      "prov:agent": "chicago311:city_of_chicago"
+    },
+    "_:id32": {
+      "prov:activity": "chicago311:data_collection_activity",
+      "prov:agent": "chicago311:murali_natarajan"
+    },
+    "_:id33": {
+      "prov:activity": "chicago311:data_cleaning_activity",
+      "prov:agent": "chicago311:murali_natarajan",
+      "prov:plan": "chicago311:cleaning_script"
+    },
+    "_:id34": {
+      "prov:activity": "chicago311:data_cleaning_activity",
+      "prov:agent": "chicago311:python_environment"
+    },
+    "_:id35": {
+      "prov:activity": "chicago311:deidentification_activity",
+      "prov:agent": "chicago311:murali_natarajan",
+      "prov:plan": "chicago311:deidentification_script"
+    },
+    "_:id36": {
+      "prov:activity": "chicago311:deidentification_activity",
+      "prov:agent": "chicago311:python_environment"
+    },
+    "_:id37": {
+      "prov:activity": "chicago311:segmentation_activity",
+      "prov:agent": "chicago311:ramitha_kotarkonda",
+      "prov:plan": "chicago311:segmentation_notebook"
+    },
+    "_:id38": {
+      "prov:activity": "chicago311:feature_importance_activity",
+      "prov:agent": "chicago311:ramitha_kotarkonda",
+      "prov:plan": "chicago311:feature_importance_notebook"
+    },
+    "_:id39": {
+      "prov:activity": "chicago311:documentation_activity",
+      "prov:agent": "chicago311:matthew_guan"
+    }
+  },
+  "wasInformedBy": {
+    "_:id40": {
+      "prov:informed": "chicago311:data_cleaning_activity",
+      "prov:informant": "chicago311:data_collection_activity"
+    },
+    "_:id41": {
+      "prov:informed": "chicago311:deidentification_activity",
+      "prov:informant": "chicago311:data_cleaning_activity"
+    },
+    "_:id42": {
+      "prov:informed": "chicago311:segmentation_activity",
+      "prov:informant": "chicago311:deidentification_activity"
+    },
+    "_:id43": {
+      "prov:informed": "chicago311:feature_importance_activity",
+      "prov:informant": "chicago311:deidentification_activity"
+    }
+  },
+  "actedOnBehalfOf": {
+    "_:id44": {
+      "prov:delegate": "chicago311:murali_natarajan",
+      "prov:responsible": "chicago311:uiuc"
+    },
+    "_:id45": {
+      "prov:delegate": "chicago311:ramitha_kotarkonda",
+      "prov:responsible": "chicago311:uiuc"
+    },
+    "_:id46": {
+      "prov:delegate": "chicago311:matthew_guan",
+      "prov:responsible": "chicago311:uiuc"
+    }
+  }
+}

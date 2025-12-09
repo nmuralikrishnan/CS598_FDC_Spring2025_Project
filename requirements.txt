@@ -1,0 +1,24 @@
+# Chicago 311 Data Curation - Python Dependencies
+
+# Core Data Processing
+pandas==2.1.1
+numpy==1.26.2
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.12.2
+
+# Machine Learning (for analysis notebooks)
+scikit-learn==1.3.2
+
+# Jupyter
+jupyterlab==4.2.1
+ipykernel==6.29.0
+
+# Provenance and Workflow
+prov==2.0.0
+pydot==1.4.2
+graphviz==0.20.1
+
+# Additional utilities
+python-dateutil==2.8.2

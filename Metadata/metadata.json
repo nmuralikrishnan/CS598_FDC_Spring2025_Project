@@ -1,64 +1,108 @@
 {
   "identifier": {
-    "identifier": "Not assigned",
+    "identifier": "XX.XXXXX/XXXXX.XXXXXXX",
     "identifierType": "DOI"
   },
   "creators": [
     {
-      "creatorName": "Murali Natarajan"
+      "name": "Natarajan, Murali",
+      "affiliation": "University of Illinois at Urbana-Champaign"
     },
     {
-      "creatorName": "Ramitha Kotarkonda"
+      "name": "Kotarkonda, Ramitha",
+      "affiliation": "University of Illinois at Urbana-Champaign"
     },
     {
-      "creatorName": "Matthew Guan"
+      "name": "Guan, Matthew",
+      "affiliation": "University of Illinois at Urbana-Champaign"
     }
-
   ],
   "titles": [
     {
-      "title": "Chicago 311 Service Request Dataset (Curated Sample Extract, 2025)"
+      "title": "Chicago 311 Service Request Dataset - Curated, K-Anonymized Sample"
     }
   ],
   "publisher": "University of Illinois at Urbana-Champaign",
-  "publicationYear": 2025,
+  "publicationYear": "2025",
   "resourceType": {
     "resourceTypeGeneral": "Dataset",
-    "resourceType": "CSV tabular dataset"
+    "resourceType": "Dataset"
   },
   "subjects": [
-    { "subject": "311 Service Requests" },
-    { "subject": "Public Service Data" },
-    { "subject": "Chicago City Services" },
-  ],
-
- "contributors": [
     {
-      "contributorName": "City of Chicago",
-      "contributorType": "DataCurator"
-    }  
+      "subject": "311 service requests"
+    },
+    {
+      "subject": "Chicago"
+    },
+    {
+      "subject": "urban planning"
+    },
+    {
+      "subject": "K-anonymity"
+    },
+    {
+      "subject": "privacy-preserving data"
+    },
+    {
+      "subject": "data curation"
+    }
   ],
-
+  "contributors": [
+    {
+      "name": "City of Chicago",
+      "contributorType": "DataCollector"
+    }
+  ],
   "dates": [
     {
-      "date": "2025-12-03",
+      "date": "2025-12-01",
+      "dateType": "Issued"
+    },
+    {
+      "date": "2011/2025",
       "dateType": "Collected"
-    }  
+    }
   ],
-
-  "rightsList": [
-  {
-    "rights": "Public Domain / Open Data",
+  "language": "en",
+  "relatedIdentifiers": [
+    {
+      "relatedIdentifier": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests/v6vf-nfxy/data_preview",
+      "relatedIdentifierType": "URL",
+      "relationType": "IsDerivedFrom"
+    },
+    {
+      "relatedIdentifier": "https://github.com/nmuralikrishnan/CS598_FDC_Spring2025_Project",
+      "relatedIdentifierType": "URL",
+      "relationType": "IsIdenticalTo"
+    }
+  ],
+  "sizes": [
+    "193,841 records",
+    "28 columns"
+  ],
+  "formats": [
+    "CSV"
+  ],
+  "version": "1.0",
+  "rights": {
+    "rights": "Public Domain",
     "rightsURI": "https://opendefinition.org/licenses/pdl/"
-  }
- ],
-
- "relatedIdentifiers": [
-  {
-    "relatedIdentifier": "https://data.cityofchicago.org/Service-Requests/311-Service-Requests/v6vf-nfxy/about_data",
-    "relatedIdentifierType": "URL",
-    "relationType": "IsDerivedFrom"
-  }
- ]
-  
+  },
+  "descriptions": [
+    {
+      "description": "A curated and privacy-protected sample of service requests from Chicago's 311 system. The dataset has been processed through data cleaning and K-anonymity (k=5) de-identification to enable public research while protecting individual privacy. Suitable for urban planning, civic engagement analysis, and policy research.",
+      "descriptionType": "Abstract"
+    },
+    {
+      "description": "The dataset contains 28 variables including service request identifiers, temporal information (dates, resolution times), geographic data (generalized coordinates, ward, community area), service classifications (186 request types), and departmental information. Privacy protection implemented through K-anonymity (k=5) with ZIP codes generalized to 3 digits and coordinates rounded to 3 decimal places. Street addresses and other direct identifiers removed. Data retention: 96.9% of original sample.",
+      "descriptionType": "Methods"
+    }
+  ],
+  "geoLocations": [
+    {
+      "geoLocationPlace": "Chicago, Illinois, USA"
+    }
+  ],
+  "schemaVersion": "http://datacite.org/schema/kernel-4.4"
 }

@@ -1,23 +1,35 @@
-Field Name,Type,Description,Example
-SR_NUMBER,String,Unique identifier assigned to each 311 service request,SR25-01948318
-SR_TYPE,String,Full text description of the service request category,Aircraft Noise Complaint
-SR_SHORT_CODE,String,Abbreviated service request type code,AVN
-CREATED_DEPARTMENT,String,Name of the department that initially logged the request,Unknown
-OWNER_DEPARTMENT,String,Department responsible for addressing and resolving the request,Aviation
-STATUS,String,Current status of the request (open, in progress, completed, etc.),Completed
-ORIGIN,String,How the request was submitted (phone, mobile app, internet, etc.),Internet
-CREATED_DATE,DateTime (ISO 8601),Date and time the service request was created,2025-10-22T19:15:30
-LAST_MODIFIED_DATE,DateTime (ISO 8601),Most recent update to the request record,2025-10-22T19:15:31
-CLOSED_DATE,DateTime (ISO 8601),Date and time the request was closed. Null if unresolved,2025-10-22T19:15:30
-CITY,String,City where the service request occurred,Chicago
-STATE,String,State where the service request occurred,Illinois
-ZIP_CODE,Integer,3- or 5-digit ZIP code associated with the service request,606
-DUPLICATE,Boolean,Whether the record was classified as a duplicate,false
-LEGACY_RECORD,Boolean,Indicates records carried over from older City of Chicago systems,false
-PARENT_SR_NUMBER,String,If the request is a duplicate, this field contains the original SR number,SR25-01948317
-COMMUNITY_AREA,Float,Chicago community area code (1–77),67.0
-WARD,Float,Chicago ward number (1–50),17.0
-LATITUDE,Float,Latitude coordinate of request location,41.7703
-LONGITUDE,Float,Longitude coordinate of request location,-87.6654
-RESOLUTION_TIME_HOURS,Float,Time from creation to closure, converted to hours,0.0
-CREATED_TIME,Time (HH:MM:SS),Time-of-day component extracted from CREATED_DATE,19:15:30
+Field Name,Data Type,Description,Format/Range,Missing Values,Transformations Applied,Privacy Impact,Example Values
+SR_NUMBER,String,Unique service request identifier assigned by 311 system,Alphanumeric (e.g. SR22-12345678),None - Required field,None,None - Not identifying without other context,SR22-00123456
+SR_TYPE,Categorical,Type/category of service request,Text values (100+ unique categories),Rare (<0.1%),Standardized to title case,None,Graffiti Removal; Pothole in Street; Tree Debris; Rodent Baiting
+SR_SHORT_CODE,Categorical,Abbreviated code for service request type,Alphanumeric codes,Some missing,None,None,GRAF; POT; TDEB
+STATUS,Categorical,Current status of the service request,"Open, Completed, Cancelled",None,None,None,Completed; Open
+CREATED_DATE,Date,Date portion of when request was created,YYYY-MM-DD format,None,Split from original CREATED_DATE timestamp,Temporal precision preserved,"2024-10-15, 2025-01-20"
+CREATED_TIME,Time,Time portion of when request was created,HH:MM:SS format,None,Split from original CREATED_DATE timestamp,Temporal precision preserved,"14:30:00, 09:15:45"
+LAST_MODIFIED_DATE,DateTime,Date and time when request was last updated,YYYY-MM-DD HH:MM:SS,Some for recently created requests,Converted to datetime type,None,"2024-10-16 10:30:00"
+CLOSED_DATE,DateTime,Date and time when request was closed/completed,YYYY-MM-DD HH:MM:SS,Many for open requests,Converted to datetime type,None,"2024-10-18 15:45:00"
+RESOLUTION_TIME_HOURS,Float,Time between creation and closure in hours (engineered feature),Numeric (0 to 1000s),Missing for open requests,Calculated as (CLOSED_DATE - CREATED_DATE) / 3600,None,"48.5, 120.25, 2.75"
+DUPLICATE,Boolean,Removed during cleaning - not in final dataset,True/False,N/A,Rows with DUPLICATE=True were removed,N/A,N/A - Removed
+CITY,Categorical,City where service request originated,Text,"None after imputation (filled with 'Chicago')",Standardized to title case; missing values filled with 'Chicago',None,Chicago
+STATE,Categorical,State where service request originated,Text (full name),"None after imputation (filled with 'Illinois')",Expanded 'IL' to 'Illinois'; missing values filled,None,Illinois
+ZIP_CODE,Categorical (String),Generalized ZIP code for privacy protection,3-digit prefix (e.g. 606),Converted 'NA' for missing,"Truncated to first 3 digits; missing converted to 'NA'","GENERALIZED - Reduced from 5 digits to 3 for geographic privacy","606, 607, 608"
+WARD,Integer,Chicago ward number (1-50),Numeric 1-50,Rare,None,Quasi-identifier for K-anonymity,"1, 25, 42"
+POLICE_DISTRICT,Integer,Chicago police district number,Numeric 1-25,Rare,None,Quasi-identifier for K-anonymity,"1, 18, 24"
+COMMUNITY_AREA,Integer,Chicago community area number (1-77),Numeric 1-77,Rare,None,Quasi-identifier for K-anonymity,"8, 32, 75"
+LATITUDE,Float,Latitude coordinate (generalized for privacy),Decimal degrees (3 decimal precision),"Some (excluded in cleaning if both LAT/LONG missing)","Rounded to 3 decimal places (~100m precision)","GENERALIZED - Reduced precision to protect exact locations","41.882, 41.790, 41.925"
+LONGITUDE,Float,Longitude coordinate (generalized for privacy),Decimal degrees (3 decimal precision),"Some (excluded in cleaning if both LAT/LONG missing)","Rounded to 3 decimal places (~100m precision)","GENERALIZED - Reduced precision to protect exact locations","-87.630, -87.755, -87.624"
+CREATED_DEPARTMENT,Categorical,Department that created/received the request,Text values (multiple departments),Some,Missing values filled with 'Unknown',None,"Department of Streets and Sanitation, Department of Water Management, 311 City Services"
+OWNER_DEPARTMENT,Categorical,Department responsible for handling the request,Text values (multiple departments),Some,None,None,"Department of Streets and Sanitation, Department of Transportation"
+POLICE_SECTOR,String,Police sector designation,Alphanumeric codes,Some,None,None,"123, 456"
+CREATED_HOUR,Integer,REMOVED - Hour of day when request created,N/A,N/A,Dropped as redundant (captured in CREATED_TIME),N/A,N/A - Removed
+CREATED_DAY_OF_WEEK,Integer,REMOVED - Day of week when request created,N/A,N/A,Dropped as redundant (derivable from CREATED_DATE),N/A,N/A - Removed
+CREATED_MONTH,Integer,REMOVED - Month when request created,N/A,N/A,Dropped as redundant (derivable from CREATED_DATE),N/A,N/A - Removed
+STREET_ADDRESS,String,REMOVED for privacy - Full street address,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+STREET_NUMBER,String,REMOVED for privacy - Building/house number,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+STREET_NAME,String,REMOVED for privacy - Street name,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+STREET_DIRECTION,Categorical,REMOVED for privacy - Street direction prefix,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+STREET_TYPE,Categorical,REMOVED for privacy - Street type suffix,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+LOCATION,String,REMOVED for privacy - Combined location string,N/A,N/A,Removed entirely for privacy protection,REMOVED - Direct identifier,N/A - Removed
+X_COORDINATE,Float,REMOVED for privacy - High-precision X coordinate,N/A,N/A,Removed as redundant after coordinate rounding,REMOVED - High-precision location,N/A - Removed
+Y_COORDINATE,Float,REMOVED for privacy - High-precision Y coordinate,N/A,N/A,Removed as redundant after coordinate rounding,REMOVED - High-precision location,N/A - Removed
+LEGACY_SR_NUMBER,String,REMOVED - Legacy system identifier,N/A,N/A,Dropped as redundant,N/A,N/A - Removed
+SANITATION_DIVISION_DAYS,String,REMOVED - Sanitation-specific scheduling,N/A,N/A,Dropped as domain-specific and sparse,N/A,N/A - Removed

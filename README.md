@@ -4,6 +4,8 @@
 
 This project demonstrates comprehensive data curation practices on Chicago 311 Service Request data, following the USGS Data Lifecycle Model. The workflow includes data collection, cleaning, de-identification using K-anonymity, analysis, and complete provenance documentation.
 
+This README is not the final report. The final report PDF can be viewed in our Coursera submission.
+
 **Course:** CS 598 - Foundations of Data Curation  
 **Institution:** University of Illinois at Urbana-Champaign  
 **Team:** Murali Natarajan, Ramitha Kotarkonda, Matthew Guan
@@ -38,6 +40,11 @@ CS598_FDC_Spring2025_Project/
 ├── Metadata/                           # Documentation
 │   ├── metadata.json                   # DataCite metadata
 │   └── data_dictionary.csv             # Field descriptions
+│   └── Codebook.md                     # Codebook
+
+├── Data Models and Abstractions/       # Data models
+│   ├── schema.json                     # JSON schema for the curated dataset
+│   └── ontology.jsonld                 # Ontology
 │
 ├── Docs/                               # Project reports
 │
@@ -283,7 +290,7 @@ After running the scripts, you'll have:
 |-------------|------------------|
 | Murali Natarajan | Data collection, cleaning, de-identification, provenance |
 | Ramitha Kotarkonda | Documentation,Segmentation analysis,Reproducabilty  |
-| Matthew Guan | Documentation,feature importance modeling, metadata creation, data dictionary |
+| Matthew Guan | Documentation,feature importance modeling, metadata creation, data dictionary, ontology, JSON schema |
 
 ## Compliance & Standards
 

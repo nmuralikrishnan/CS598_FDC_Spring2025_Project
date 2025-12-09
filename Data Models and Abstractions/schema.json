@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Chicago 311 Service Request (Curated Sample)",
+  "description": "JSON Schema describing the structure and types of the curated 311 service request dataset.",
+  "type": "object",
+  "properties": {
+    "SR_NUMBER": { "type": "string", "description": "Unique service request identifier" },
+
+    "SR_TYPE": { "type": "string", "description": "Category of service request" },
+
+    "SR_SHORT_CODE": { "type": "string", "description": "Short code for service request type" },
+
+    "CREATED_DEPARTMENT": { "type": "string", "description": "Department that created the request" },
+
+    "OWNER_DEPARTMENT": { "type": "string", "description": "Department currently responsible for the request" },
+
+    "STATUS": { "type": "string", "description": "Current status of the request (e.g., Open, Completed)" },
+
+    "ORIGIN": { "type": "string", "description": "How the request was submitted (e.g., Internet, Phone)" },
+
+    "CREATED_DATE": { 
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date when the request was created"
+    },
+
+    "LAST_MODIFIED_DATE": { 
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp of last modification"
+    },
+
+    "CLOSED_DATE": { 
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the request was closed"
+    },
+
+    "CITY": { "type": ["string", "null"] },
+
+    "STATE": { "type": ["string", "null"] },
+
+    "ZIP_CODE": { "type": ["string", "null"], "description": "Three-digit ZIP prefix in curated dataset" },
+
+    "DUPLICATE": { "type": "boolean", "description": "Whether the request is a duplicate" },
+
+    "LEGACY_RECORD": { "type": "boolean", "description": "Whether the record originates from a legacy system" },
+
+    "PARENT_SR_NUMBER": { "type": ["string", "null"], "description": "Parent service request number, if any" },
+
+    "COMMUNITY_AREA": { "type": ["number", "null"] },
+
+    "WARD": { "type": ["number", "null"] },
+
+    "ELECTRICAL_DISTRICT": { "type": ["number", "null"] },
+
+    "ELECTRICITY_GRID": { "type": ["string", "null"] },
+
+    "POLICE_SECTOR": { "type": ["number", "null"] },
+
+    "POLICE_DISTRICT": { "type": ["number", "null"] },
+
+    "POLICE_BEAT": { "type": ["number", "null"] },
+
+    "PRECINCT": { "type": ["number", "null"] },
+
+    "LATITUDE": { "type": ["number", "null"] },
+
+    "LONGITUDE": { "type": ["number", "null"] },
+
+    "RESOLUTION_TIME_HOURS": { 
+      "type": ["number", "null"],
+      "minimum": 0,
+      "description": "Computed time to resolution in hours"
+    },
+
+    "CREATED_TIME": { 
+      "type": ["string", "null"],
+      "description": "Time of day request created (HH:MM:SS)",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d$"
+    }
+  }
+}
